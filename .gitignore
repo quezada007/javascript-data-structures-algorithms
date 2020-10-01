@@ -12,6 +12,9 @@ public
 # Code Coverage files
 coverage
 
+# JSDoc
+docs
+
 # Logs
 logs
 *.log

@@ -4,7 +4,9 @@
   "description": "JavaScript Data Structures and Algorithms",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage"
+    "clean": "rimraf coverage docs",
+    "test": "npm run clean && jest --coverage",
+    "docs": "npm run clean && jsdoc -c jsdoc.json"
   },
   "keywords": [
     "JavaScript",
@@ -22,6 +24,8 @@
     "eslint-config-airbnb": "^18.2.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jest": "^24.0.2",
-    "jest": "^26.4.2"
+    "jest": "^26.4.2",
+    "jsdoc": "^3.6.6",
+    "rimraf": "^3.0.2"
   }
 }
