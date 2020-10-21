@@ -24,4 +24,15 @@ export default class SinglyLinkedList {
         this.head = null;
         this.length = 0;
     }
+
+    /**
+     * Add a new node to the beginning of the linked list.
+     * @param {string|number} data - The data for the node.
+     */
+    insertFirst(data) {
+        const newNode = new Node(data);
+        newNode.next = this.head;
+        this.head = newNode;
+        this.length += 1;
+    }
 }
