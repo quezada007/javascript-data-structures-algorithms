@@ -26,10 +26,10 @@ export default class SinglyLinkedList {
     }
 
     /**
-     * Add a new node to the beginning of the linked list.
+     * Add a new node at the beginning of the linked list.
      * @param {string|number} data - The data for the node.
      */
-    insertFirst(data) {
+    insertFirst(data) { // O(1)
         const newNode = new Node(data);
         newNode.next = this.head;
         this.head = newNode;
