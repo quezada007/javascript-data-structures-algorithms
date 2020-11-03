@@ -18,4 +18,22 @@ describe('Singly Linked List', () => {
         expect(list.head.next.next.data).toEqual('a');
         expect(list.length).toEqual(3);
     });
+
+    test('inserting a node at the end of the list using the insertLast method', () => {
+        const list = new SinglyLinkedList();
+        expect(list.head).toEqual(null);
+        expect(list.length).toEqual(0);
+        list.insertLast('a');
+        expect(list.head.data).toEqual('a');
+        expect(list.length).toEqual(1);
+        list.insertLast('b');
+        expect(list.head.data).toEqual('a');
+        expect(list.head.next.data).toEqual('b');
+        expect(list.length).toEqual(2);
+        list.insertLast('c');
+        expect(list.head.data).toEqual('a');
+        expect(list.head.next.data).toEqual('b');
+        expect(list.head.next.next.data).toEqual('c');
+        expect(list.length).toEqual(3);
+    });
 });
