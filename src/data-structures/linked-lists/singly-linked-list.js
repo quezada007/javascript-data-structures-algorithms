@@ -35,4 +35,22 @@ export default class SinglyLinkedList {
         this.head = newNode;
         this.length += 1;
     }
+
+    /**
+     * Add a new node at the end of the linked list.
+     * @param {string|number} data - The data for the node.
+     */
+    insertLast(data) { // O(n)
+        // Check to see if the list is empty
+        if (this.head === null) {
+            this.head = new Node(data);
+        } else {
+            let current = this.head;
+            while (current.next !== null) {
+                current = current.next;
+            }
+            current.next = new Node(data);
+        }
+        this.length += 1;
+    }
 }
