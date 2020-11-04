@@ -87,4 +87,12 @@ export default class SinglyLinkedList {
             this.length += 1;
         }
     }
+
+    /**
+     * Get the data of the first node of the list.
+     * @returns {*} - The data of the first node of the list or null if empty.
+     */
+    getFirst() { // O(1)
+        return this.head !== null ? this.head.data : null;
+    }
 }
