@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable max-classes-per-file */
 /**
  * Class representing a node for the Singly Linked List.
@@ -16,7 +17,7 @@ export class Node {
 /**
  * Class representing a Singly Linked List.
  */
-export default class SinglyLinkedList {
+class SinglyLinkedList {
     /**
      * Create a Singly Linked List.
      */
@@ -90,9 +91,11 @@ export default class SinglyLinkedList {
 
     /**
      * Get the data of the first node of the list.
-     * @returns {*} - The data of the first node of the list or null if empty.
+     * @returns {*} - The data of the first node of the list or null if the list is empty.
      */
     getFirst() { // O(1)
         return this.head !== null ? this.head.data : null;
     }
 }
+
+export default SinglyLinkedList;
