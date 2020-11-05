@@ -96,6 +96,21 @@ class SinglyLinkedList {
     getFirst() { // O(1)
         return this.head !== null ? this.head.data : null;
     }
+
+    /**
+     * Get the data of the last node of the list.
+     * @returns {*} - The data of the last node of the list or null if the list is empty.
+     */
+    getLast() { // O(n)
+        if (this.head === null) {
+            return null;
+        }
+        let current = this.head;
+        while (current.next !== null) {
+            current = current.next;
+        }
+        return current.data;
+    }
 }
 
 export default SinglyLinkedList;
