@@ -102,4 +102,15 @@ describe('Singly Linked List', () => {
             list.insert('a', false);
         }).toThrow();
     });
+
+    test('getting the data of the first node of the list', () => {
+        const list = new SinglyLinkedList();
+        expect(list.getFirst()).toEqual(null);
+        list.insertFirst('a');
+        expect(list.getFirst()).toEqual('a');
+        list.insertFirst('b');
+        expect(list.getFirst()).toEqual('b');
+        list.insertLast('c');
+        expect(list.getFirst()).toEqual('b');
+    });
 });
