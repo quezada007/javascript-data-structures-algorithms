@@ -174,6 +174,39 @@ class SinglyLinkedList {
         this.length -= 1;
         return deletedNode.data;
     }
+
+    /**
+     * Delete the node that contains the given data.
+     * @param {string|number} data - The data to search in the list.
+     * @returns {*} - The data of the node deleted or null if the list is empty.
+     */
+    remove(data) { // O(n)
+        // If the list is empty, then return null
+        if (this.head === null) {
+            return null;
+        }
+        let current = this.head;
+        let previous = null;
+        // Search for the data in the list
+        while (current.data !== data && current.next !== null) {
+            previous = current;
+            current = current.next;
+        }
+        // If the data is found, delete the node and return the data
+        if (current.data === data) {
+            // Check to make sure that the data is not in the head
+            if (previous !== null) {
+                previous.next = current.next;
+                current.next = null;
+            } else {
+                this.head = current.next;
+            }
+            this.length -= 1;
+            return current.data;
+        }
+        // Return null if the data was not found in the list
+        return null;
+    }
 }
 
 export default SinglyLinkedList;
