@@ -111,6 +111,27 @@ class SinglyLinkedList {
         }
         return current.data;
     }
+
+    /**
+     * Get the data of the node at a given position on the list.
+     * @param {number} position - The position of the node.
+     * @returns {*} - The data of the node at the given position.
+     */
+    getPosition(position) { // O(n)
+        // Check for invalid position values
+        if (!Number.isInteger(position) || position < 1 || position > this.length) {
+            throw new Error(`The position needs to be an integer greater than 0 and less than ${this.length + 1}`);
+        }
+        let index = 1;
+        let current = this.head;
+        while (index <= position && current !== null) {
+            if (index === position) {
+                return current.data;
+            }
+            index += 1;
+            current = current.next;
+        }
+    }
 }
 
 export default SinglyLinkedList;
