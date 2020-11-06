@@ -132,6 +132,21 @@ class SinglyLinkedList {
             current = current.next;
         }
     }
+
+    /**
+     * Delete the first node of the list.
+     * @returns {*} - The data of the node deleted or null if the list is empty.
+     */
+    removeFirst() { // O(1)
+        const current = this.head;
+        if (current !== null) {
+            this.head = this.head.next;
+            current.next = null;
+            this.length -= 1;
+            return current.data;
+        }
+        return null;
+    }
 }
 
 export default SinglyLinkedList;
