@@ -113,4 +113,15 @@ describe('Singly Linked List', () => {
         list.insertLast('c');
         expect(list.getFirst()).toEqual('b');
     });
+
+    test('getting the data of the last node of the list', () => {
+        const list = new SinglyLinkedList();
+        expect(list.getLast()).toEqual(null);
+        list.insertFirst('a');
+        expect(list.getLast()).toEqual('a');
+        list.insertFirst('b');
+        expect(list.getLast()).toEqual('a');
+        list.insertLast('c');
+        expect(list.getLast()).toEqual('c');
+    });
 });
