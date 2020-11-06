@@ -124,4 +124,22 @@ describe('Singly Linked List', () => {
         list.insertLast('c');
         expect(list.getLast()).toEqual('c');
     });
+
+    test('getting the data of the node at a given position', () => {
+        const list = new SinglyLinkedList();
+        list.insertFirst('a');
+        expect(list.getPosition(1)).toEqual('a');
+        list.insertFirst('b');
+        expect(list.getPosition(1)).toEqual('b');
+        expect(list.getPosition(2)).toEqual('a');
+        list.insertFirst('c');
+        expect(list.getPosition(1)).toEqual('c');
+        expect(list.getPosition(2)).toEqual('b');
+        expect(list.getPosition(3)).toEqual('a');
+        list.insertLast('d');
+        expect(list.getPosition(1)).toEqual('c');
+        expect(list.getPosition(2)).toEqual('b');
+        expect(list.getPosition(3)).toEqual('a');
+        expect(list.getPosition(4)).toEqual('d');
+    });
 });
