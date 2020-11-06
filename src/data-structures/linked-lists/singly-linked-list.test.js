@@ -167,4 +167,21 @@ describe('Singly Linked List', () => {
             list.getPosition(false);
         }).toThrow();
     });
+
+    test('deleting the first node of the list', () => {
+        const list = new SinglyLinkedList();
+        expect(list.removeFirst()).toEqual(null);
+        list.insertFirst('a');
+        expect(list.removeFirst()).toEqual('a');
+        expect(list.removeFirst()).toEqual(null);
+        list.insertFirst('a');
+        list.insertFirst('b');
+        list.insertFirst('c');
+        list.insertFirst('d');
+        expect(list.removeFirst()).toEqual('d');
+        expect(list.removeFirst()).toEqual('c');
+        expect(list.removeFirst()).toEqual('b');
+        expect(list.removeFirst()).toEqual('a');
+        expect(list.removeFirst()).toEqual(null);
+    });
 });
