@@ -142,4 +142,29 @@ describe('Singly Linked List', () => {
         expect(list.getPosition(3)).toEqual('a');
         expect(list.getPosition(4)).toEqual('d');
     });
+
+    test('throws on invalid position in the getPosition method', () => {
+        const list = new SinglyLinkedList();
+        list.insertFirst('a');
+        list.insertFirst('b');
+        list.insertFirst('c');
+        expect(() => {
+            list.getPosition(0);
+        }).toThrow();
+        expect(() => {
+            list.getPosition(-5);
+        }).toThrow();
+        expect(() => {
+            list.getPosition('string');
+        }).toThrow();
+        expect(() => {
+            list.getPosition(2.4);
+        }).toThrow();
+        expect(() => {
+            list.getPosition(100);
+        }).toThrow();
+        expect(() => {
+            list.getPosition(false);
+        }).toThrow();
+    });
 });
