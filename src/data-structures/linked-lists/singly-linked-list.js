@@ -147,6 +147,33 @@ class SinglyLinkedList {
         }
         return null;
     }
+
+    /**
+     * Delete the last node of the list.
+     * @returns {*} - The data of the node deleted or null if the list is empty.
+     */
+    removeLast() { // O(n)
+        // If the list is empty, then return null
+        if (this.head === null) {
+            return null;
+        }
+        // If there is only 1 node, then delete the head
+        if (this.head.next === null) {
+            const current = this.head;
+            this.head = null;
+            this.length -= 1;
+            return current.data;
+        }
+        // If the list has more than 1 node, go to the end of the list
+        let current = this.head;
+        while (current.next.next !== null) {
+            current = current.next;
+        }
+        const deletedNode = current.next;
+        current.next = null;
+        this.length -= 1;
+        return deletedNode.data;
+    }
 }
 
 export default SinglyLinkedList;
