@@ -207,6 +207,35 @@ class SinglyLinkedList {
         // Return null if the data was not found in the list
         return null;
     }
+
+    /**
+     * Delete a node at a given position.
+     * @param {number} position - The position (index) of the node that is going to get deleted.
+     * @returns {*} - The data of the node deleted or null if the list is empty.
+     */
+    removePosition(position) { // O(n)
+        // Check for invalid position values
+        if (!Number.isInteger(position) || position < 1 || position > this.length) {
+            throw new Error(`The position needs to be an integer greater than 0 and less than ${this.length + 1}`);
+        }
+        let index = 1;
+        let current = this.head;
+        let previous = null;
+        while (index < position && current.next !== null) {
+            previous = current;
+            current = current.next;
+            index += 1;
+        }
+        // Check to make sure that the data is not in the head
+        if (previous !== null) {
+            previous.next = current.next;
+            current.next = null;
+        } else {
+            this.head = current.next;
+        }
+        this.length -= 1;
+        return current.data;
+    }
 }
 
 export default SinglyLinkedList;
