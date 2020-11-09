@@ -272,4 +272,27 @@ describe('Singly Linked List', () => {
             list.removePosition(false);
         }).toThrow();
     });
+
+    test('get the length of the list', () => {
+        const list = new SinglyLinkedList();
+        expect(list.getLength()).toEqual(0);
+        list.insertFirst('a');
+        expect(list.getLength()).toEqual(1);
+        list.insertLast('b');
+        expect(list.getLength()).toEqual(2);
+        list.insert('c', 2);
+        expect(list.getLength()).toEqual(3);
+        list.insert('d', 4);
+        expect(list.getLength()).toEqual(4);
+        list.removeFirst();
+        expect(list.getLength()).toEqual(3);
+        list.removeLast();
+        expect(list.getLength()).toEqual(2);
+        list.remove('c');
+        expect(list.getLength()).toEqual(1);
+        list.removePosition(1);
+        expect(list.getLength()).toEqual(0);
+        list.removeFirst();
+        expect(list.getLength()).toEqual(0);
+    });
 });
