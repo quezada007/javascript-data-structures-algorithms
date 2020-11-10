@@ -295,4 +295,25 @@ describe('Singly Linked List', () => {
         list.removeFirst();
         expect(list.getLength()).toEqual(0);
     });
+
+    test('traverse linked list', () => {
+        const list = new SinglyLinkedList();
+        expect(list.traverse()).toEqual('');
+        list.insertFirst('a');
+        expect(list.traverse()).toEqual('a');
+        list.insertLast('b');
+        expect(list.traverse()).toEqual('a, b');
+        list.insertFirst('c');
+        expect(list.traverse()).toEqual('c, a, b');
+        list.insertLast('d');
+        expect(list.traverse()).toEqual('c, a, b, d');
+        list.removePosition(2);
+        expect(list.traverse()).toEqual('c, b, d');
+        list.removeLast();
+        expect(list.traverse()).toEqual('c, b');
+        list.removeFirst();
+        expect(list.traverse()).toEqual('b');
+        list.removePosition(1);
+        expect(list.traverse()).toEqual('');
+    });
 });
