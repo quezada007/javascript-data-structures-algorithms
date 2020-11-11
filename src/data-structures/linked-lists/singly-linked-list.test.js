@@ -316,4 +316,24 @@ describe('Singly Linked List', () => {
         list.removePosition(1);
         expect(list.traverse()).toEqual('');
     });
+
+    test('reverse linked list', () => {
+        const list = new SinglyLinkedList();
+        list.insertLast('a');
+        expect(list.traverse()).toEqual('a');
+        list.insertLast('b');
+        expect(list.traverse()).toEqual('a, b');
+        list.reverse();
+        expect(list.traverse()).toEqual('b, a');
+        list.insertFirst('c');
+        expect(list.traverse()).toEqual('c, b, a');
+        list.reverse();
+        expect(list.traverse()).toEqual('a, b, c');
+        list.insertLast('d');
+        list.reverse();
+        expect(list.traverse()).toEqual('d, c, b, a');
+        list.insertFirst('f');
+        list.reverse();
+        expect(list.traverse()).toEqual('a, b, c, d, f');
+    });
 });
