@@ -258,6 +258,22 @@ class SinglyLinkedList {
         }
         return nodeList.slice(0, -2);
     }
+
+    /**
+     * Reverse the entire list.
+     */
+    reverse() { // O(n)
+        let previous = null;
+        let current = this.head;
+        let next;
+        while (current !== null) {
+            next = current.next;
+            current.next = previous;
+            previous = current;
+            current = next;
+        }
+        this.head = previous;
+    }
 }
 
 export default SinglyLinkedList;
