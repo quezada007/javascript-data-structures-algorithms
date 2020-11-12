@@ -25,6 +25,23 @@ class DoublyLinkedList {
         this.head = null;
         this.length = 0;
     }
+
+    /**
+     * Add a new node at the beginning of the linked list.
+     * @param {string|number} data - The data for the node.
+     */
+    insertFirst(data) { // O(1)
+        const newNode = new Node(data);
+        // Check to see if the list is empty
+        if (this.head === null) {
+            this.head = newNode;
+        } else {
+            newNode.next = this.head;
+            this.head.prev = newNode;
+            this.head = newNode;
+        }
+        this.length += 1;
+    }
 }
 
 export default DoublyLinkedList;
