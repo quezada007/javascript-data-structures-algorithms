@@ -91,4 +91,26 @@ describe('Doubly Linked List', () => {
         expect(list.head.next.next.next.next.next.data).toEqual('d');
         expect(list.head.next.next.next.next.next.next.data).toEqual('f');
     });
+
+    test('throws on invalid position in the insert method', () => {
+        const list = new DoublyLinkedList();
+        expect(() => {
+            list.insert('a', 0);
+        }).toThrow();
+        expect(() => {
+            list.insert('a', -5);
+        }).toThrow();
+        expect(() => {
+            list.insert('a', 'string');
+        }).toThrow();
+        expect(() => {
+            list.insert('a', 2.4);
+        }).toThrow();
+        expect(() => {
+            list.insert('a', 100);
+        }).toThrow();
+        expect(() => {
+            list.insert('a', false);
+        }).toThrow();
+    });
 });
