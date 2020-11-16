@@ -62,6 +62,42 @@ class DoublyLinkedList {
         }
         this.length += 1;
     }
+
+    /**
+     * Insert a node at a specific position in the list.
+     * @param {string|number} data - The data for the node.
+     * @param {number} position - The position (index) of the list to insert the new node.
+     * @throws Will throw an error if the position is invalid.
+     */
+    insert(data, position) {
+        // Check for invalid position values
+        if (!Number.isInteger(position) || position < 1 || position > this.length + 1) {
+            throw new Error(`The position needs to be an integer greater than 0 and less than ${this.length + 2}`);
+        }
+        if (position === 1) {
+            // If position is 1 then insert at the head
+            this.insertFirst(data);
+        } else if (position === this.length + 1) {
+            // If position is 1 more than the list length, then insert at the tail
+            this.insertLast(data);
+        } else {
+            // Insert at the middle
+            let index = 1;
+            let current = this.head;
+            const newNode = new Node(data);
+            while (index <= position && current.next !== null) {
+                if (index === position - 1) {
+                    newNode.next = current.next;
+                    current.next.prev = newNode;
+                    current.next = newNode;
+                    newNode.prev = current;
+                }
+                index += 1;
+                current = current.next;
+            }
+            this.length += 1;
+        }
+    }
 }
 
 export default DoublyLinkedList;
