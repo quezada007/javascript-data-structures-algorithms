@@ -170,4 +170,17 @@ describe('Doubly Linked List', () => {
         expect(list.head.next.next.next.prev.prev.data).toEqual('c');
         expect(list.head.next.next.next.prev.prev.prev.data).toEqual('b');
     });
+
+    test('throws on invalid nextData in the insertBefore method', () => {
+        const list = new DoublyLinkedList();
+        expect(() => {
+            list.insertBefore('a', 'b');
+        }).toThrow();
+        list.insertFirst('a');
+        list.insertFirst('b');
+        list.insertFirst('c');
+        expect(() => {
+            list.insertBefore('d', 'z');
+        }).toThrow();
+    });
 });
