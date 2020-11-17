@@ -98,6 +98,33 @@ class DoublyLinkedList {
             this.length += 1;
         }
     }
+
+    /**
+     * Insert a node after a given node.
+     * @param {string|number} data - The data for the node.
+     * @param {string|number} prevData - The data of the node to search.
+     * @throws Will throw an error if prevData is not in the list.
+     */
+    insertAfter(data, prevData) { // O(n)
+        let current = this.head;
+        while (current !== null) {
+            if (current.data === prevData) {
+                break;
+            }
+            current = current.next;
+        }
+        if (current === null) {
+            throw new Error(`${prevData} is not in the list.`);
+        }
+        const newNode = new Node(data);
+        newNode.prev = current;
+        newNode.next = current.next;
+        current.next = newNode;
+        // Check to make sure we are not inserting the last node of the list
+        if (newNode.next !== null) {
+            newNode.next.prev = newNode;
+        }
+    }
 }
 
 export default DoublyLinkedList;
