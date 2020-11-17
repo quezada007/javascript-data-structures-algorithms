@@ -136,4 +136,15 @@ describe('Doubly Linked List', () => {
         expect(list.head.next.next.next.prev.prev.data).toEqual('c');
         expect(list.head.next.next.next.prev.prev.prev.data).toEqual('a');
     });
+
+    test('throws on invalid prevData in the insertAfter method', () => {
+        const list = new DoublyLinkedList();
+        expect(() => {
+            list.insertAfter('a', 'b');
+        }).toThrow();
+        list.insertFirst('a');
+        expect(() => {
+            list.insertAfter('c', 'z');
+        }).toThrow();
+    });
 });
