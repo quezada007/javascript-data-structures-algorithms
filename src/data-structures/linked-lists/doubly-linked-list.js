@@ -125,6 +125,39 @@ class DoublyLinkedList {
             newNode.next.prev = newNode;
         }
     }
+
+    /**
+     * Insert a node before a given node.
+     * @param {string|number} data - The data for the node.
+     * @param {string|number} nextData - The data of the node to search.
+     * @throws Will throw an error if nextData is not in the list or if the list is empty.
+     */
+    insertBefore(data, nextData) { // O(n)
+        // Make sure that list is not empty
+        if (this.head === null) {
+            throw new Error('The list is empty');
+        }
+        // Check to see if the first node is the nextData node
+        if (this.head.data === nextData) {
+            this.insertFirst(data);
+            return;
+        }
+        let current = this.head;
+        while (current !== null) {
+            if (current.data === nextData) {
+                break;
+            }
+            current = current.next;
+        }
+        if (current === null) {
+            throw new Error(`${nextData} is not in the list.`);
+        }
+        const newNode = new Node(data);
+        newNode.prev = current.prev;
+        newNode.next = current;
+        current.prev.next = newNode;
+        current.prev = newNode;
+    }
 }
 
 export default DoublyLinkedList;
