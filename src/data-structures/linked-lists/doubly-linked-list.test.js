@@ -113,4 +113,27 @@ describe('Doubly Linked List', () => {
             list.insert('a', false);
         }).toThrow();
     });
+
+    test('inserting a node after another node', () => {
+        const list = new DoublyLinkedList();
+        expect(list.head).toEqual(null);
+        list.insertFirst('a');
+        expect(list.head.data).toEqual('a');
+        list.insertAfter('b', 'a');
+        expect(list.head.data).toEqual('a');
+        expect(list.head.next.data).toEqual('b');
+        expect(list.head.next.prev.data).toEqual('a');
+        list.insertAfter('c', 'a');
+        expect(list.head.data).toEqual('a');
+        expect(list.head.next.data).toEqual('c');
+        expect(list.head.next.prev.data).toEqual('a');
+        expect(list.head.next.next.data).toEqual('b');
+        expect(list.head.next.next.prev.data).toEqual('c');
+        expect(list.head.next.next.prev.prev.data).toEqual('a');
+        list.insertAfter('d', 'b');
+        expect(list.head.next.next.next.data).toEqual('d');
+        expect(list.head.next.next.next.prev.data).toEqual('b');
+        expect(list.head.next.next.next.prev.prev.data).toEqual('c');
+        expect(list.head.next.next.next.prev.prev.prev.data).toEqual('a');
+    });
 });
