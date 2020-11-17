@@ -69,7 +69,7 @@ class DoublyLinkedList {
      * @param {number} position - The position (index) of the list to insert the new node.
      * @throws Will throw an error if the position is invalid.
      */
-    insert(data, position) {
+    insert(data, position) { // O(n)
         // Check for invalid position values
         if (!Number.isInteger(position) || position < 1 || position > this.length + 1) {
             throw new Error(`The position needs to be an integer greater than 0 and less than ${this.length + 2}`);
