@@ -158,6 +158,24 @@ class DoublyLinkedList {
         current.prev.next = newNode;
         current.prev = newNode;
     }
+
+    /**
+     * Delete the first node of the list.
+     * @returns {*} - The data of the node deleted or null if the list is empty.
+     */
+    removeFirst() { // O(1)
+        const current = this.head;
+        if (current !== null) {
+            this.head = this.head.next;
+            if (this.head !== null) {
+                this.head.prev = null;
+            }
+            current.next = null;
+            this.length -= 1;
+            return current.data;
+        }
+        return null;
+    }
 }
 
 export default DoublyLinkedList;
