@@ -183,4 +183,21 @@ describe('Doubly Linked List', () => {
             list.insertBefore('d', 'z');
         }).toThrow();
     });
+
+    test('deleting the first node of the list', () => {
+        const list = new DoublyLinkedList();
+        expect(list.removeFirst()).toEqual(null);
+        list.insertFirst('a');
+        expect(list.removeFirst()).toEqual('a');
+        expect(list.head).toEqual(null);
+        list.insertFirst('a');
+        list.insertFirst('b');
+        list.insertFirst('c');
+        list.insertFirst('d');
+        expect(list.removeFirst()).toEqual('d');
+        expect(list.removeFirst()).toEqual('c');
+        expect(list.removeFirst()).toEqual('b');
+        expect(list.removeFirst()).toEqual('a');
+        expect(list.removeFirst()).toEqual(null);
+    });
 });
