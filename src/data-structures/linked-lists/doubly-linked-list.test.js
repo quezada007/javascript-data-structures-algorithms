@@ -200,4 +200,21 @@ describe('Doubly Linked List', () => {
         expect(list.removeFirst()).toEqual('a');
         expect(list.removeFirst()).toEqual(null);
     });
+
+    test('deleting the last node of the list', () => {
+        const list = new DoublyLinkedList();
+        expect(list.removeLast()).toEqual(null);
+        list.insertFirst('a');
+        expect(list.removeLast()).toEqual('a');
+        expect(list.head).toEqual(null);
+        list.insertFirst('a');
+        list.insertFirst('b');
+        list.insertFirst('c');
+        list.insertFirst('d');
+        expect(list.removeLast()).toEqual('a');
+        expect(list.removeLast()).toEqual('b');
+        expect(list.removeLast()).toEqual('c');
+        expect(list.removeLast()).toEqual('d');
+        expect(list.removeLast()).toEqual(null);
+    });
 });
