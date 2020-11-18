@@ -2,7 +2,7 @@
 /**
  * Class representing a node for the Doubly Linked List.
  */
-export class Node {
+class Node {
     /**
      * Create a node.
      * @param {string|number} data - The data for the node.
