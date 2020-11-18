@@ -204,6 +204,45 @@ class DoublyLinkedList {
         this.length -= 1;
         return deletedNode.data;
     }
+
+    /**
+     * Delete the node that contains the given data.
+     * @param {string|number} data - The data to search in the list.
+     * @returns {*} - The data of the node deleted or null if the list is empty.
+     */
+    remove(data) { // O(n)
+        // If the list is empty, then return null
+        if (this.head === null) {
+            return null;
+        }
+        let current = this.head;
+        // Search for the data in the list
+        while (current.data !== data && current.next !== null) {
+            current = current.next;
+        }
+        // If the data is found, delete the node and return the data
+        if (current.data === data) {
+            // Check to see if it's the first node
+            if (current.prev === null) {
+                return this.removeFirst();
+            }
+            // Check to see if it's the last node
+            if (current.next === null) {
+                current.prev.next = null;
+                current.prev = null;
+            } else {
+                // The node is in between 2 nodes
+                current.prev.next = current.next;
+                current.next.prev = current.prev;
+                current.next = null;
+                current.prev = null;
+            }
+            this.length -= 1;
+            return current.data;
+        }
+        // Return null if the data was not found in the list
+        return null;
+    }
 }
 
 export default DoublyLinkedList;
