@@ -263,4 +263,29 @@ describe('Doubly Linked List', () => {
         expect(list.removePosition(2)).toEqual('b');
         expect(list.removePosition(1)).toEqual('d');
     });
+
+    test('throws on invalid position in the removePosition method', () => {
+        const list = new DoublyLinkedList();
+        list.insertFirst('a');
+        list.insertFirst('b');
+        list.insertFirst('c');
+        expect(() => {
+            list.removePosition(0);
+        }).toThrow();
+        expect(() => {
+            list.removePosition(-5);
+        }).toThrow();
+        expect(() => {
+            list.removePosition('string');
+        }).toThrow();
+        expect(() => {
+            list.removePosition(2.4);
+        }).toThrow();
+        expect(() => {
+            list.removePosition(100);
+        }).toThrow();
+        expect(() => {
+            list.removePosition(false);
+        }).toThrow();
+    });
 });
