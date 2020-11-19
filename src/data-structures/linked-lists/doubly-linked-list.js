@@ -286,6 +286,21 @@ class DoublyLinkedList {
     getLength() { // O(1)
         return this.length;
     }
+
+    /**
+     * Traverse the entire linked list.
+     * @return {string} - The list in a comma delimited format.
+     */
+    traverse() { // O(n)
+        let nodeList = '';
+        let current = this.head;
+        while (current !== null) {
+            nodeList += `${current.data}, `;
+            current = current.next;
+        }
+        // Trim the tail comma and space ', '
+        return nodeList.slice(0, -2);
+    }
 }
 
 export default DoublyLinkedList;
