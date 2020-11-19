@@ -278,6 +278,14 @@ class DoublyLinkedList {
         this.length -= 1;
         return current.data;
     }
+
+    /**
+     * Get the length of the list.
+     * @returns {number} - The length of the list.
+     */
+    getLength() { // O(1)
+        return this.length;
+    }
 }
 
 export default DoublyLinkedList;
