@@ -301,6 +301,26 @@ class DoublyLinkedList {
         // Trim the tail comma and space ', '
         return nodeList.slice(0, -2);
     }
+
+    /**
+     * Reverse the entire list.
+     */
+    reverse() { // O(n)
+        if (this.head === null) {
+            return;
+        }
+        let p1 = this.head;
+        let p2 = p1.next;
+        p1.next = null;
+        p1.prev = p2;
+        while (p2 !== null) {
+            p2.prev = p2.next;
+            p2.next = p1;
+            p1 = p2;
+            p2 = p2.prev;
+        }
+        this.head = p1;
+    }
 }
 
 export default DoublyLinkedList;
