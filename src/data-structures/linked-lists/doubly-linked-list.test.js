@@ -241,4 +241,26 @@ describe('Doubly Linked List', () => {
         expect(list.remove('d')).toEqual('d');
         expect(list.remove('c')).toEqual('c');
     });
+
+    test('deleting a node at a given position', () => {
+        const list = new DoublyLinkedList();
+        list.insertFirst('a');
+        expect(list.removePosition(1)).toEqual('a');
+        list.insertFirst('a');
+        list.insertFirst('b');
+        list.insertFirst('c');
+        list.insertFirst('d');
+        expect(list.removePosition(1)).toEqual('d');
+        expect(list.removePosition(1)).toEqual('c');
+        expect(list.removePosition(1)).toEqual('b');
+        expect(list.removePosition(1)).toEqual('a');
+        list.insertFirst('a');
+        list.insertFirst('b');
+        list.insertFirst('c');
+        list.insertFirst('d');
+        expect(list.removePosition(4)).toEqual('a');
+        expect(list.removePosition(2)).toEqual('c');
+        expect(list.removePosition(2)).toEqual('b');
+        expect(list.removePosition(1)).toEqual('d');
+    });
 });
