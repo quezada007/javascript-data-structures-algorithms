@@ -16,6 +16,14 @@ class StackArray {
     isEmpty() { // O(1)
         return this.stack.length === 0;
     }
+
+    /**
+     * Add data to the top of the stack.
+     * @param {string|number} data - The data for the stack.
+     */
+    push(data) { // O(1)
+        this.stack.push(data);
+    }
 }
 
 export default StackArray;
