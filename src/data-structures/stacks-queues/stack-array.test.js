@@ -30,4 +30,12 @@ describe('Stack Array', () => {
         expect(stack.pop()).toEqual('b');
         expect(stack.pop()).toEqual('a');
     });
+
+    test('stack is empty', () => {
+        const stack = new StackArray();
+        expect(stack.stack).toHaveLength(0);
+        expect(stack.isEmpty()).toBe(true);
+        stack.push('a');
+        expect(stack.isEmpty()).toBe(false);
+    });
 });
