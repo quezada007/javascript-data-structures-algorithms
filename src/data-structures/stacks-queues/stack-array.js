@@ -24,6 +24,18 @@ class StackArray {
     push(data) { // O(1)
         this.stack.push(data);
     }
+
+    /**
+     * Remove data from the top of the stack.
+     * @returns {string|number} - The data removed from the top of the stack.
+     * @throws Will throw an error if the stack is empty.
+     */
+    pop() { // O(1)
+        if (this.isEmpty()) {
+            throw new Error('The Stack is empty');
+        }
+        return this.stack.pop();
+    }
 }
 
 export default StackArray;
