@@ -24,6 +24,14 @@ class StackLinkedList {
         this.head = null;
         this.length = 0;
     }
+
+    /**
+     * Check the stack to see if it's empty.
+     * @returns {boolean} - true if the list is empty or false if not.
+     */
+    isEmpty() { // O(1)
+        return this.head === null;
+    }
 }
 
 export default StackLinkedList;
