@@ -43,6 +43,22 @@ class StackLinkedList {
         this.head = newNode;
         this.length += 1;
     }
+
+    /**
+     * Remove data from the top of the stack.
+     * @returns {string|number} - The data removed from the top of the stack.
+     * @throws Will throw an error if the stack is empty.
+     */
+    pop() { // O(1)
+        if (this.isEmpty()) {
+            throw new Error('The Stack is empty');
+        }
+        const current = this.head;
+        this.head = this.head.next;
+        current.next = null;
+        this.length -= 1;
+        return current.data;
+    }
 }
 
 export default StackLinkedList;
