@@ -36,6 +36,18 @@ class StackArray {
         }
         return this.stack.pop();
     }
+
+    /**
+     * Return the data from the top of the stack without removing it.
+     * @returns {string|number} - The data from the top of the stack.
+     * @throws Will throw an error if the stack is empty.
+     */
+    peek() { // O(1)
+        if (this.isEmpty()) {
+            throw new Error('The Stack is empty');
+        }
+        return this.stack[this.stack.length - 1];
+    }
 }
 
 export default StackArray;
