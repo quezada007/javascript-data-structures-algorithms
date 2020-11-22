@@ -52,4 +52,25 @@ describe('Stack Array', () => {
         stack.push('e');
         expect(stack.peek()).toEqual('e');
     });
+
+    test('get the length of the stack', () => {
+        const stack = new StackArray();
+        expect(stack.getLength()).toEqual(0);
+        stack.push('a');
+        expect(stack.getLength()).toEqual(1);
+        stack.push('b');
+        expect(stack.getLength()).toEqual(2);
+        stack.push('c', 2);
+        expect(stack.getLength()).toEqual(3);
+        stack.push('d', 4);
+        expect(stack.getLength()).toEqual(4);
+        stack.pop();
+        expect(stack.getLength()).toEqual(3);
+        stack.pop();
+        expect(stack.getLength()).toEqual(2);
+        stack.pop('c');
+        expect(stack.getLength()).toEqual(1);
+        stack.pop();
+        expect(stack.getLength()).toEqual(0);
+    });
 });
