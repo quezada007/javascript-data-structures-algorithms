@@ -71,6 +71,14 @@ class StackLinkedList {
         }
         return this.head.data;
     }
+
+    /**
+     * Get the length of the stack.
+     * @returns {number} - The length of the stack.
+     */
+    getLength() { // O(1)
+        return this.length;
+    }
 }
 
 export default StackLinkedList;
