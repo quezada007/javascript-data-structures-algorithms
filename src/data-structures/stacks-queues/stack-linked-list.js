@@ -59,6 +59,18 @@ class StackLinkedList {
         this.length -= 1;
         return current.data;
     }
+
+    /**
+     * Return the data from the top of the stack without removing it.
+     * @returns {string|number} - The data from the top of the stack.
+     * @throws Will throw an error if the stack is empty.
+     */
+    peek() { // O(1)
+        if (this.isEmpty()) {
+            throw new Error('The Stack is empty');
+        }
+        return this.head.data;
+    }
 }
 
 export default StackLinkedList;
