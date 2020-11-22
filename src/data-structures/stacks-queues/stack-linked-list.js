@@ -32,6 +32,17 @@ class StackLinkedList {
     isEmpty() { // O(1)
         return this.head === null;
     }
+
+    /**
+     * Add data to the top of the stack.
+     * @param {string|number} data - The data for the stack.
+     */
+    push(data) { // O(1)
+        const newNode = new Node(data);
+        newNode.next = this.head;
+        this.head = newNode;
+        this.length += 1;
+    }
 }
 
 export default StackLinkedList;
