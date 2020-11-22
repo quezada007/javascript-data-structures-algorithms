@@ -38,4 +38,18 @@ describe('Stack Linked List', () => {
         stack.push('a');
         expect(stack.isEmpty()).toBe(false);
     });
+
+    test('peek method of the stack', () => {
+        const stack = new StackLinkedList();
+        expect(stack.head).toBeNull();
+        expect(() => { stack.peek(); }).toThrow();
+        stack.push('a');
+        expect(stack.peek()).toEqual('a');
+        stack.push('b');
+        expect(stack.peek()).toEqual('b');
+        stack.push('c');
+        stack.push('d');
+        stack.push('e');
+        expect(stack.peek()).toEqual('e');
+    });
 });
