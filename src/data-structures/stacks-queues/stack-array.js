@@ -48,6 +48,14 @@ class StackArray {
         }
         return this.stack[this.stack.length - 1];
     }
+
+    /**
+     * Get the length of the stack.
+     * @returns {number} - The length of the stack.
+     */
+    getLength() { // O(1)
+        return this.stack.length;
+    }
 }
 
 export default StackArray;
