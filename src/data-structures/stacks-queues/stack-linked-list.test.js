@@ -30,4 +30,12 @@ describe('Stack Linked List', () => {
         expect(stack.pop()).toEqual('b');
         expect(stack.pop()).toEqual('a');
     });
+
+    test('stack is empty', () => {
+        const stack = new StackLinkedList();
+        expect(stack.head).toBeNull();
+        expect(stack.isEmpty()).toBe(true);
+        stack.push('a');
+        expect(stack.isEmpty()).toBe(false);
+    });
 });
