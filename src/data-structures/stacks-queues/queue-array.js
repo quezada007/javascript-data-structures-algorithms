@@ -16,6 +16,14 @@ class QueueArray {
     isEmpty() { // O(1)
         return this.queue.length === 0;
     }
+
+    /**
+     * Add data to the end of the queue.
+     * @param {string|number} data - The data for the queue.
+     */
+    enqueue(data) { // O(1)
+        this.queue.push(data);
+    }
 }
 
 export default QueueArray;
