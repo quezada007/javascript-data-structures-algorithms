@@ -24,6 +24,18 @@ class QueueArray {
     enqueue(data) { // O(1)
         this.queue.push(data);
     }
+
+    /**
+     * Remove data from the front of the queue.
+     * @returns {string|number} - The data removed from the front of the queue.
+     * @throws Will throw an error if the queue is empty.
+     */
+    dequeue() { // O(n)
+        if (this.isEmpty()) {
+            throw new Error('The Queue is empty');
+        }
+        return this.queue.shift();
+    }
 }
 
 export default QueueArray;
