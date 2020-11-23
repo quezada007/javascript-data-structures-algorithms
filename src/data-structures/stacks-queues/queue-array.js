@@ -36,6 +36,18 @@ class QueueArray {
         }
         return this.queue.shift();
     }
+
+    /**
+     * Return the data from the front of the queue without removing it.
+     * @returns {string|number} - The data from the front of the queue.
+     * @throws Will throw an error if the queue is empty.
+     */
+    peek() { // O(1)
+        if (this.isEmpty()) {
+            throw new Error('The Queue is empty');
+        }
+        return this.queue[0];
+    }
 }
 
 export default QueueArray;
