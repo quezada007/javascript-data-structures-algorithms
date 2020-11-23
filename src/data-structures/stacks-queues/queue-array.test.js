@@ -14,4 +14,20 @@ describe('Queue Array', () => {
         expect(queue.queue[1]).toEqual('b');
         expect(queue.queue[2]).toEqual('c');
     });
+
+    test('removing from the queue using the dequeue method', () => {
+        const queue = new QueueArray();
+        expect(queue.queue).toHaveLength(0);
+        expect(() => { queue.dequeue(); }).toThrow();
+        queue.enqueue('a');
+        expect(queue.dequeue()).toEqual('a');
+        queue.enqueue('a');
+        queue.enqueue('b');
+        queue.enqueue('c');
+        queue.enqueue('d');
+        expect(queue.dequeue()).toEqual('a');
+        expect(queue.dequeue()).toEqual('b');
+        expect(queue.dequeue()).toEqual('c');
+        expect(queue.dequeue()).toEqual('d');
+    });
 });
