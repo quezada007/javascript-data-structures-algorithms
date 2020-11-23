@@ -30,4 +30,12 @@ describe('Queue Array', () => {
         expect(queue.dequeue()).toEqual('c');
         expect(queue.dequeue()).toEqual('d');
     });
+
+    test('queue is empty', () => {
+        const queue = new QueueArray();
+        expect(queue.queue).toHaveLength(0);
+        expect(queue.isEmpty()).toBe(true);
+        queue.enqueue('a');
+        expect(queue.isEmpty()).toBe(false);
+    });
 });
