@@ -53,4 +53,25 @@ describe('Queue Array', () => {
         queue.enqueue('e');
         expect(queue.peek()).toEqual('b');
     });
+
+    test('get the length of the queue', () => {
+        const queue = new QueueArray();
+        expect(queue.getLength()).toEqual(0);
+        queue.enqueue('a');
+        expect(queue.getLength()).toEqual(1);
+        queue.enqueue('b');
+        expect(queue.getLength()).toEqual(2);
+        queue.enqueue('c', 2);
+        expect(queue.getLength()).toEqual(3);
+        queue.enqueue('d', 4);
+        expect(queue.getLength()).toEqual(4);
+        queue.dequeue();
+        expect(queue.getLength()).toEqual(3);
+        queue.dequeue();
+        expect(queue.getLength()).toEqual(2);
+        queue.dequeue('c');
+        expect(queue.getLength()).toEqual(1);
+        queue.dequeue();
+        expect(queue.getLength()).toEqual(0);
+    });
 });
