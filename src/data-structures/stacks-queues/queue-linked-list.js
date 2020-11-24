@@ -33,6 +33,21 @@ class QueueLinkedList {
     isEmpty() { // O(1)
         return this.head === null;
     }
+
+    /**
+     * Add data to the tail of the queue.
+     * @param {string|number} data - The data for the queue.
+     */
+    enqueue(data) { // O(1)
+        const newNode = new Node(data);
+        if (this.head === null) {
+            this.head = newNode;
+        } else {
+            this.tail.next = newNode;
+        }
+        this.tail = newNode;
+        this.length += 1;
+    }
 }
 
 export default QueueLinkedList;
