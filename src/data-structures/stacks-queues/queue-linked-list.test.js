@@ -16,4 +16,19 @@ describe('Queue Linked List', () => {
         expect(queue.head.next.data).toEqual('b');
         expect(queue.tail.data).toEqual('c');
     });
+
+    test('removing from the queue using the dequeue method', () => {
+        const queue = new QueueLinkedList();
+        expect(() => { queue.dequeue(); }).toThrow();
+        queue.enqueue('a');
+        expect(queue.dequeue()).toEqual('a');
+        queue.enqueue('a');
+        queue.enqueue('b');
+        queue.enqueue('c');
+        queue.enqueue('d');
+        expect(queue.dequeue()).toEqual('a');
+        expect(queue.dequeue()).toEqual('b');
+        expect(queue.dequeue()).toEqual('c');
+        expect(queue.dequeue()).toEqual('d');
+    });
 });
