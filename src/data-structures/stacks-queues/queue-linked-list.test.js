@@ -31,4 +31,11 @@ describe('Queue Linked List', () => {
         expect(queue.dequeue()).toEqual('c');
         expect(queue.dequeue()).toEqual('d');
     });
+
+    test('queue is empty', () => {
+        const queue = new QueueLinkedList();
+        expect(queue.isEmpty()).toBe(true);
+        queue.enqueue('a');
+        expect(queue.isEmpty()).toBe(false);
+    });
 });
