@@ -103,4 +103,18 @@ describe('Binary Search Tree', () => {
         expect(bst.root.left.data).toEqual(6);
         expect(bst.root.left.left.data).toEqual(2);
     });
+
+    test('breadth first search - level order', () => {
+        const bst = new BinarySearchTree();
+        expect(bst.root).toBeNull();
+        bst.insert(10);
+        bst.insert(6);
+        bst.insert(15);
+        bst.insert(9);
+        bst.insert(4);
+        bst.insert(14);
+        bst.insert(16);
+        bst.insert(2);
+        expect(bst.breadthFirstSearch()).toEqual([10, 6, 15, 4, 9, 14, 16, 2]);
+    });
 });
