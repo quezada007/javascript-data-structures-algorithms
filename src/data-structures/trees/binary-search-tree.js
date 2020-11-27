@@ -78,6 +78,59 @@ class BinarySearchTree {
         }
         return false;
     }
+
+    /**
+     * Delete a node with the given data.
+     * @param {string|number} data - The data of the node to delete.
+     */
+    delete(data) { // O(log n)
+        let current = this.root;
+        let parent = null;
+        // Find the node to delete
+        while (current !== null) {
+            if (data === current.data) {
+                break;
+            }
+            parent = current;
+            if (data < current.data) {
+                current = current.left;
+            } else {
+                current = current.right;
+            }
+        }
+        // The node was not found
+        if (current === null) {
+            return;
+        }
+        // 2 children
+        // Find the in-order successor and its parent
+        if (current.left !== null && current.right !== null) {
+            let parentSuccessor = current;
+            let successor = current.right;
+            while (successor.left !== null) {
+                parentSuccessor = successor;
+                successor = successor.left;
+            }
+            current.data = successor.data;
+            current = successor;
+            parent = parentSuccessor;
+        }
+        // 1 child or no child
+        let child = null;
+        if (current.left !== null) {
+            child = current.left;
+        } else {
+            child = current.right;
+        }
+        // Check to see if the root needs to get deleted
+        if (parent === null) {
+            this.root = child;
+        } else if (current === parent.left) {
+            parent.left = child;
+        } else {
+            parent.right = child;
+        }
+    }
 }
 
 export default BinarySearchTree;
