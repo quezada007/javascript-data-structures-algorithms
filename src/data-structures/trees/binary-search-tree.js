@@ -59,6 +59,25 @@ class BinarySearchTree {
             }
         }
     }
+
+    /**
+     * Search for a given node.
+     * @param {string|number} data - The data to search.
+     * @returns {boolean} - true if the node was found or false if not.
+     */
+    search(data) { // O(log n)
+        let current = this.root;
+        while (current !== null) {
+            if (data < current.data) {
+                current = current.left;
+            } else if (data > current.data) {
+                current = current.right;
+            } else {
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
 export default BinarySearchTree;
