@@ -131,6 +131,38 @@ class BinarySearchTree {
             parent.right = child;
         }
     }
+
+    /**
+     * Get the tree data in Level Order.
+     * @returns {Array} - The tree data in level order.
+     */
+    breadthFirstSearch() { // O(V+E)
+        // Store all the data of the tree in an array
+        const tree = [];
+        // Breadth First Search needs a Queue
+        const queue = [];
+        // Start at the root
+        let node = this.root;
+        queue.push(node);
+        while (queue.length > 0) {
+            // Remove a node from the queue
+            node = queue.shift();
+            // Add the node to the tree array
+            tree.push(node.data);
+            // Check the left child
+            if (node.left !== null) {
+                // Add left child to the queue
+                queue.push(node.left);
+            }
+            // Check the right child
+            if (node.right !== null) {
+                // Add the right child to the queue
+                queue.push(node.right);
+            }
+        }
+        // Return the tree data in level order
+        return tree;
+    }
 }
 
 export default BinarySearchTree;
