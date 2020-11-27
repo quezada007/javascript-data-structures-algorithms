@@ -39,4 +39,30 @@ describe('Binary Search Tree', () => {
         bst.insert(15);
         expect(bst.root.right.right.left.data).toEqual(15);
     });
+
+    test('searching for a node', () => {
+        const bst = new BinarySearchTree();
+        expect(bst.root).toBeNull();
+        bst.insert(10);
+        bst.insert(6);
+        bst.insert(15);
+        bst.insert(9);
+        bst.insert(4);
+        bst.insert(14);
+        bst.insert(16);
+        bst.insert(2);
+        expect(bst.search(10)).toBe(true);
+        expect(bst.search(6)).toBe(true);
+        expect(bst.search(15)).toBe(true);
+        expect(bst.search(9)).toBe(true);
+        expect(bst.search(4)).toBe(true);
+        expect(bst.search(14)).toBe(true);
+        expect(bst.search(16)).toBe(true);
+        expect(bst.search(2)).toBe(true);
+        expect(bst.search(100)).toBe(false);
+        expect(bst.search(22)).toBe(false);
+        expect(bst.search(43)).toBe(false);
+        expect(bst.search(75)).toBe(false);
+        expect(bst.search(57)).toBe(false);
+    });
 });
