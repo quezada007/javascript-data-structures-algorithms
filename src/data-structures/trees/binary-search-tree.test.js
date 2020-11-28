@@ -131,4 +131,18 @@ describe('Binary Search Tree', () => {
         bst.insert(2);
         expect(bst.depthFirstSearchPreOrder()).toEqual([10, 6, 4, 2, 9, 15, 14, 16]);
     });
+
+    test('depth first search - in-order', () => {
+        const bst = new BinarySearchTree();
+        expect(bst.root).toBeNull();
+        bst.insert(10);
+        bst.insert(6);
+        bst.insert(15);
+        bst.insert(9);
+        bst.insert(4);
+        bst.insert(14);
+        bst.insert(16);
+        bst.insert(2);
+        expect(bst.depthFirstSearchInOrder()).toEqual([2, 4, 6, 9, 10, 14, 15, 16]);
+    });
 });
