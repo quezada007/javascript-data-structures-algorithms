@@ -189,6 +189,32 @@ class BinarySearchTree {
         // Return the tree data in pre-order
         return tree;
     }
+
+    /**
+     * Get the tree data in In-Order.
+     * @returns {Array} - The tree data in in-order.
+     */
+    depthFirstSearchInOrder() { // O(V+E)
+        // Store all the data of the tree in an array
+        const tree = [];
+        /**
+         * Traverse the tree recursively and add the node to the tree array.
+         * @param {string|number} node - The node to start traversing.
+         */
+        function traverse(node) {
+            if (node.left !== null) {
+                traverse(node.left);
+            }
+            tree.push(node.data);
+            if (node.right !== null) {
+                traverse(node.right);
+            }
+        }
+        // Start at the root
+        traverse(this.root);
+        // Return the tree data in in-order
+        return tree;
+    }
 }
 
 export default BinarySearchTree;
