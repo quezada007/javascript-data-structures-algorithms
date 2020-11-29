@@ -9,6 +9,24 @@ class MaxBinaryHeap {
     constructor() {
         this.heap = [];
     }
+
+    /**
+     * Move the last element of the Heap to its correct position.
+     */
+    siftUp() { // O(log n)
+        let index = this.heap.length - 1;
+        const element = this.heap[index];
+        while (index > 0) {
+            const parentIndex = Math.floor((index - 1) / 2);
+            const parent = this.heap[parentIndex];
+            if (element <= parent) {
+                break;
+            }
+            this.heap[parentIndex] = element;
+            this.heap[index] = parent;
+            index = parentIndex;
+        }
+    }
 }
 
 export default MaxBinaryHeap;
