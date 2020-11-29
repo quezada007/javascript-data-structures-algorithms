@@ -27,6 +27,15 @@ class MaxBinaryHeap {
             index = parentIndex;
         }
     }
+
+    /**
+     * Insert data to the heap.
+     * @param {string|number} data - The data to insert.
+     */
+    insert(data) { // O(log n)
+        this.heap.push(data);
+        this.siftUp();
+    }
 }
 
 export default MaxBinaryHeap;
