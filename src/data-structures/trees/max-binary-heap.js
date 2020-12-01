@@ -36,6 +36,41 @@ class MaxBinaryHeap {
         this.heap.push(data);
         this.siftUp();
     }
+
+    /**
+     * Move the root element of the Heap to its correct position.
+     */
+    siftDown() { // O(log n)
+        let elementIndex = 0;
+        const { length } = this.heap;
+        const element = this.heap[0];
+        while (true) {
+            const leftChildIndex = 2 * elementIndex + 1;
+            const rightChildIndex = 2 * elementIndex + 2;
+            let leftChild;
+            let rightChild;
+            let swapIndex = null;
+
+            if (leftChildIndex < length) {
+                leftChild = this.heap[leftChildIndex];
+                if (leftChild > element) {
+                    swapIndex = leftChildIndex;
+                }
+            }
+            if (rightChildIndex < length) {
+                rightChild = this.heap[rightChildIndex];
+                if (swapIndex === null || (swapIndex !== null && rightChild > leftChild)) {
+                    swapIndex = rightChildIndex;
+                }
+            }
+            if (swapIndex === null) {
+                break;
+            }
+            this.heap[elementIndex] = this.heap[swapIndex];
+            this.heap[swapIndex] = element;
+            elementIndex = swapIndex;
+        }
+    }
 }
 
 export default MaxBinaryHeap;
