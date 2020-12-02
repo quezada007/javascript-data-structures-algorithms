@@ -71,6 +71,23 @@ class MaxBinaryHeap {
             elementIndex = swapIndex;
         }
     }
+
+    /**
+     * Extract the max value of the heap.
+     * @throws Will throw an error if the heap is empty.
+     */
+    extractMax() { // O(log n)
+        if (this.heap.length === 0) {
+            throw new Error('The Heap is empty');
+        }
+        const max = this.heap[0];
+        const end = this.heap.pop();
+        if (this.heap.length > 0) {
+            this.heap[0] = end;
+            this.siftDown();
+        }
+        return max;
+    }
 }
 
 export default MaxBinaryHeap;
