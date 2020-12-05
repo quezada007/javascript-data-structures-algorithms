@@ -62,6 +62,29 @@ class HashTable {
         // Increment the size of the Hash Table
         this.hashTableSize += 1;
     }
+
+    /**
+     * Get the data for a given key.
+     * @param {string} key - The key used to retrieve the data.
+     * @returns {string} - The data for a given key or null if not present.
+     */
+    get(key) { // O(1)
+        // Get the hash of the key
+        const index = this.hash(key);
+        // Check to see if there's data in that index
+        if (this.keyMap[index]) {
+            // Loop through the array to find the data
+            for (let i = 0; i < this.keyMap[index].length; i++) {
+                // Look for the key in the array
+                if (this.keyMap[index][i][0] === key) {
+                    // If the key is found, then return the data
+                    return this.keyMap[index][i][1];
+                }
+            }
+        }
+        // If the key is not found, return null
+        return null;
+    }
 }
 
 export default HashTable;
