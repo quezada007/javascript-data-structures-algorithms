@@ -33,6 +33,35 @@ class HashTable {
     get size() { // O(1)
         return this.hashTableSize;
     }
+
+    /**
+     * Add data to the Hash Table using a key.
+     * @param {string} key - The key used to store the data in the Hash Table.
+     * @param {string|number} data - The data to store.
+     */
+    set(key, data) { // O(1)
+        // Get the hash of the key
+        const index = this.hash(key);
+        // Check to see if there is data in that index
+        if (!this.keyMap[index]) {
+            // If there's no data, then add an empty array
+            this.keyMap[index] = [];
+        }
+        // Loop through the array to find the data
+        for (let i = 0; i < this.keyMap[index].length; i++) {
+            // Look for the key in the array
+            if (this.keyMap[index][i][0] === key) {
+                // If the key is found, then update the data
+                this.keyMap[index][i][1] = data;
+                // Exit the function
+                return;
+            }
+        }
+        // Push the data to the array in that index
+        this.keyMap[index].push([key, data]);
+        // Increment the size of the Hash Table
+        this.hashTableSize += 1;
+    }
 }
 
 export default HashTable;
