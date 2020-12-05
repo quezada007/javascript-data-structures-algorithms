@@ -46,4 +46,24 @@ describe('Separate Chaining Hash Table', () => {
         ht.set('green', 'green');
         expect(ht.keyMap[1]).toEqual([['lime', 'lime'], ['green', 'green'], ['fuchsia', 'fuchsia']]);
     });
+
+    test('getting data from the Hash Table', () => {
+        const ht = new HashTable();
+        expect(ht.size).toEqual(0);
+        expect(ht.get('white')).toBeNull();
+        ht.set('white', '#FFFFFF');
+        expect(ht.get('white')).toEqual('#FFFFFF');
+        ht.set('black', '#000000');
+        expect(ht.get('black')).toEqual('#000000');
+        ht.set('olive', '#808000');
+        expect(ht.get('olive')).toEqual('#808000');
+        ht.set('lime', '#00FF00');
+        expect(ht.get('lime')).toEqual('#00FF00');
+        ht.set('green', '#008000');
+        expect(ht.get('green')).toEqual('#008000');
+        ht.set('blue', '#0000FF');
+        expect(ht.get('blue')).toEqual('#0000FF');
+        ht.set('fuchsia', '#FF00FF');
+        expect(ht.get('fuchsia')).toEqual('#FF00FF');
+    });
 });
