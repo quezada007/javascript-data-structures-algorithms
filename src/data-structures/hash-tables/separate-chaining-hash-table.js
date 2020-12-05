@@ -25,6 +25,14 @@ class HashTable {
         }
         return total;
     }
+
+    /**
+     * The size of the Hash Table.
+     * @returns {number} - The size of the Hash Table.
+     */
+    get size() { // O(1)
+        return this.hashTableSize;
+    }
 }
 
 export default HashTable;
