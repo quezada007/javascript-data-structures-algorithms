@@ -143,4 +143,21 @@ describe('Separate Chaining Hash Table', () => {
         ht.set('yellow', '#FFFF00');
         expect(ht.keys()).toEqual(['white', 'lime', 'green', 'fuchsia', 'yellow', 'black']);
     });
+
+    test('getting all the unique values of the Hash Table', () => {
+        const ht = new HashTable();
+        ht.set('white', '#FFFFFF');
+        expect(ht.values()).toEqual(['#FFFFFF']);
+        ht.set('black', '#000000');
+        expect(ht.values()).toEqual(['#FFFFFF', '#000000']);
+        ht.set('lime', '#00FF00');
+        ht.set('green', '#008000');
+        ht.set('fuchsia', '#FF00FF');
+        expect(ht.values()).toEqual(['#FFFFFF', '#00FF00', '#008000', '#FF00FF', '#000000']);
+        ht.set('yellow', '#FFFF00');
+        expect(ht.values()).toEqual(['#FFFFFF', '#00FF00', '#008000', '#FF00FF', '#FFFF00', '#000000']);
+        ht.set('second-white', '#FFFFFF');
+        ht.set('third-white', '#FFFFFF');
+        expect(ht.values()).toEqual(['#FFFFFF', '#00FF00', '#008000', '#FF00FF', '#FFFF00', '#000000']);
+    });
 });
