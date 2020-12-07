@@ -157,6 +157,31 @@ class HashTable {
         // Return the array containing the keys
         return keysArray;
     }
+
+    /**
+     * Get all the values of the Hash Table.
+     * @returns {Array} - An array containing all the unique values.
+     */
+    values() { // O(n)
+        // Create an array to store all the values
+        const valuesArray = [];
+        // Loop through the Hash Table
+        for (let i = 0; i < this.keyMap.length; i++) {
+            // Only look at indexes with data in them
+            if (this.keyMap[i]) {
+                // Loop through the array at index "i"
+                for (let j = 0; j < this.keyMap[i].length; j++) {
+                    // Collect only unique values
+                    if (!valuesArray.includes(this.keyMap[i][j][1])) {
+                        // Add the values into the valuesArray
+                        valuesArray.push(this.keyMap[i][j][1]);
+                    }
+                }
+            }
+        }
+        // Return the array containing the values
+        return valuesArray;
+    }
 }
 
 export default HashTable;
