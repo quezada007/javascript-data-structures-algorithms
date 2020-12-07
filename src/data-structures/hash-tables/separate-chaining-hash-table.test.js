@@ -110,4 +110,23 @@ describe('Separate Chaining Hash Table', () => {
         expect(ht.has('green')).toBe(true);
         expect(ht.has('fuchsia')).toBe(true);
     });
+
+    test('the size of the Hash Table', () => {
+        const ht = new HashTable();
+        expect(ht.size).toEqual(0);
+        ht.set('white', '#FFFFFF');
+        expect(ht.size).toEqual(1);
+        ht.set('lime', '#00FF00');
+        expect(ht.size).toEqual(2);
+        ht.set('green', '#008000');
+        expect(ht.size).toEqual(3);
+        ht.set('fuchsia', '#FF00FF');
+        expect(ht.size).toEqual(4);
+        ht.set('white', '#FAFAFA');
+        expect(ht.size).toEqual(4);
+        expect(ht.delete('lime')).toBe(true);
+        expect(ht.size).toEqual(3);
+        expect(ht.delete('orange')).toBe(false);
+        expect(ht.size).toEqual(3);
+    });
 });
