@@ -160,4 +160,16 @@ describe('Separate Chaining Hash Table', () => {
         ht.set('third-white', '#FFFFFF');
         expect(ht.values()).toEqual(['#FFFFFF', '#00FF00', '#008000', '#FF00FF', '#FFFF00', '#000000']);
     });
+
+    test('getting all the entries of the Hash Table', () => {
+        const ht = new HashTable();
+        ht.set('white', '#FFFFFF');
+        expect(ht.entries()).toEqual([['white', '#FFFFFF']]);
+        ht.set('black', '#000000');
+        expect(ht.entries()).toEqual([['white', '#FFFFFF'], ['black', '#000000']]);
+        ht.set('lime', '#00FF00');
+        ht.set('green', '#008000');
+        ht.set('fuchsia', '#FF00FF');
+        expect(ht.entries()).toEqual([['white', '#FFFFFF'], ['lime', '#00FF00'], ['green', '#008000'], ['fuchsia', '#FF00FF'], ['black', '#000000']]);
+    });
 });
