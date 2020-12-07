@@ -66,4 +66,28 @@ describe('Separate Chaining Hash Table', () => {
         ht.set('fuchsia', '#FF00FF');
         expect(ht.get('fuchsia')).toEqual('#FF00FF');
     });
+
+    test('deleting data from the Hash Table', () => {
+        const ht = new HashTable();
+        expect(ht.get('white')).toBeNull();
+        ht.set('white', '#FFFFFF');
+        expect(ht.delete('white')).toBe(true);
+        expect(ht.get('white')).toBeNull();
+        ht.set('olive', '#808000');
+        ht.set('blue', '#0000FF');
+        expect(ht.keyMap[8]).toEqual([['olive', '#808000'], ['blue', '#0000FF']]);
+        expect(ht.delete('olive')).toBe(true);
+        expect(ht.keyMap[8]).toEqual([['blue', '#0000FF']]);
+        expect(ht.delete('blue')).toBe(true);
+        expect(ht.keyMap[8]).toEqual([]);
+        ht.set('lime', '#00FF00');
+        ht.set('green', '#008000');
+        ht.set('fuchsia', '#FF00FF');
+        expect(ht.keyMap[1]).toEqual([['lime', '#00FF00'], ['green', '#008000'], ['fuchsia', '#FF00FF']]);
+        expect(ht.delete('green')).toBe(true);
+        expect(ht.keyMap[1]).toEqual([['lime', '#00FF00'], ['fuchsia', '#FF00FF']]);
+        expect(ht.delete('fuchsia')).toBe(true);
+        expect(ht.keyMap[1]).toEqual([['lime', '#00FF00']]);
+        expect(ht.delete('orange')).toBe(false);
+    });
 });
