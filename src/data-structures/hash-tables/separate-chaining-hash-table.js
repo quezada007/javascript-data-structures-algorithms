@@ -108,6 +108,33 @@ class HashTable {
         // If the key is not found, return false
         return false;
     }
+
+    /**
+     * Delete the data with the given key from the Hash Table.
+     * @param {string} key - The key to look for.
+     * @returns {boolean} - true if the deleting was successfully or false if not.
+     */
+    delete(key) { // O(1)
+        // Get the hash of the key
+        const index = this.hash(key);
+        // Check to see if there's data in that index
+        if (this.keyMap[index]) {
+            // Loop through the array to find the data
+            for (let i = 0; i < this.keyMap[index].length; i++) {
+                // Look for the key in the array
+                if (this.keyMap[index][i][0] === key) {
+                    // Delete the data for the array
+                    this.keyMap[index].splice(i, 1);
+                    // Decrement the size of the Hash Table
+                    this.hashTableSize -= 1;
+                    // If the key is found, then return true
+                    return true;
+                }
+            }
+        }
+        // If the key is not found, return false
+        return false;
+    }
 }
 
 export default HashTable;
