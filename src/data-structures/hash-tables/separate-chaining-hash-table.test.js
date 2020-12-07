@@ -129,4 +129,18 @@ describe('Separate Chaining Hash Table', () => {
         expect(ht.delete('orange')).toBe(false);
         expect(ht.size).toEqual(3);
     });
+
+    test('getting all the keys in the Hash Table', () => {
+        const ht = new HashTable();
+        ht.set('white', '#FFFFFF');
+        expect(ht.keys()).toEqual(['white']);
+        ht.set('black', '#000000');
+        expect(ht.keys()).toEqual(['white', 'black']);
+        ht.set('lime', '#00FF00');
+        ht.set('green', '#008000');
+        ht.set('fuchsia', '#FF00FF');
+        expect(ht.keys()).toEqual(['white', 'lime', 'green', 'fuchsia', 'black']);
+        ht.set('yellow', '#FFFF00');
+        expect(ht.keys()).toEqual(['white', 'lime', 'green', 'fuchsia', 'yellow', 'black']);
+    });
 });
