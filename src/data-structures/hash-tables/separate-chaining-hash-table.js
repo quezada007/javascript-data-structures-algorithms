@@ -135,6 +135,28 @@ class HashTable {
         // If the key is not found, return false
         return false;
     }
+
+    /**
+     * Get all the keys of the Hash Table.
+     * @returns {Array} - An array containing all the keys.
+     */
+    keys() { // O(n)
+        // Create an array to store all the keys
+        const keysArray = [];
+        // Loop through the Hash Table
+        for (let i = 0; i < this.keyMap.length; i++) {
+            // Only look at indexes with data in them
+            if (this.keyMap[i]) {
+                // Loop through the array at index "i"
+                for (let j = 0; j < this.keyMap[i].length; j++) {
+                    // Add the keys into the keysArray
+                    keysArray.push(this.keyMap[i][j][0]);
+                }
+            }
+        }
+        // Return the array containing the keys
+        return keysArray;
+    }
 }
 
 export default HashTable;
