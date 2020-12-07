@@ -90,4 +90,24 @@ describe('Separate Chaining Hash Table', () => {
         expect(ht.keyMap[1]).toEqual([['lime', '#00FF00']]);
         expect(ht.delete('orange')).toBe(false);
     });
+
+    test('checking for a key using the has method', () => {
+        const ht = new HashTable();
+        expect(ht.has('white')).toBe(false);
+        ht.set('white', '#FFFFFF');
+        expect(ht.has('white')).toBe(true);
+        ht.delete('white');
+        expect(ht.has('white')).toBe(false);
+        ht.set('black', '#000000');
+        expect(ht.has('black')).toBe(true);
+        ht.set('olive', '#808000');
+        expect(ht.has('olive')).toBe(true);
+        expect(ht.has('orange')).toBe(false);
+        ht.set('lime', '#00FF00');
+        ht.set('green', '#008000');
+        ht.set('fuchsia', '#FF00FF');
+        expect(ht.has('lime')).toBe(true);
+        expect(ht.has('green')).toBe(true);
+        expect(ht.has('fuchsia')).toBe(true);
+    });
 });
