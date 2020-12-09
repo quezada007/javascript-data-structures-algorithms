@@ -78,4 +78,57 @@ describe('Undirected Unweighted Graph', () => {
             Chicago: ['Los Angeles', 'Dallas']
         });
     });
+
+    test('removing an edge between vertices', () => {
+        const g = new Graph();
+        g.addVertex('Los Angeles');
+        g.addVertex('Dallas');
+        g.addEdge('Los Angeles', 'Dallas');
+        g.addVertex('New York');
+        g.addEdge('Dallas', 'New York');
+        g.addVertex('Chicago');
+        g.addEdge('Los Angeles', 'Chicago');
+        g.addEdge('Dallas', 'Chicago');
+        expect(g.adjacencyList).toMatchObject({
+            'Los Angeles': ['Dallas', 'Chicago'],
+            Dallas: ['Los Angeles', 'New York', 'Chicago'],
+            'New York': ['Dallas'],
+            Chicago: ['Los Angeles', 'Dallas']
+        });
+        g.removeEdge('New York', 'Dallas');
+        expect(g.adjacencyList).toMatchObject({
+            'Los Angeles': ['Dallas', 'Chicago'],
+            Dallas: ['Los Angeles', 'Chicago'],
+            'New York': [],
+            Chicago: ['Los Angeles', 'Dallas']
+        });
+        g.removeEdge('Miami', 'Seattle');
+        expect(g.adjacencyList).toMatchObject({
+            'Los Angeles': ['Dallas', 'Chicago'],
+            Dallas: ['Los Angeles', 'Chicago'],
+            'New York': [],
+            Chicago: ['Los Angeles', 'Dallas']
+        });
+        g.removeEdge('Chicago', 'New York');
+        expect(g.adjacencyList).toMatchObject({
+            'Los Angeles': ['Dallas', 'Chicago'],
+            Dallas: ['Los Angeles', 'Chicago'],
+            'New York': [],
+            Chicago: ['Los Angeles', 'Dallas']
+        });
+        g.removeEdge('Chicago', 'Dallas');
+        expect(g.adjacencyList).toMatchObject({
+            'Los Angeles': ['Dallas', 'Chicago'],
+            Dallas: ['Los Angeles'],
+            'New York': [],
+            Chicago: ['Los Angeles']
+        });
+        g.removeEdge('Los Angeles', 'Dallas');
+        expect(g.adjacencyList).toMatchObject({
+            'Los Angeles': ['Chicago'],
+            Dallas: [],
+            'New York': [],
+            Chicago: ['Los Angeles']
+        });
+    });
 });
