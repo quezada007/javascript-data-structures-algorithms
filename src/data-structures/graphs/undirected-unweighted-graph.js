@@ -20,6 +20,19 @@ class Graph {
             this.adjacencyList[vertex] = [];
         }
     }
+
+    /**
+     * Add an edge connecting 2 vertices.
+     * @param {string} vertex1 - The first vertex.
+     * @param {string} vertex2 - The second vertex.
+     */
+    addEdge(vertex1, vertex2) { // O(1)
+        // Make sure the vertices are in the graph
+        if (this.adjacencyList[vertex1] && !this.adjacencyList[vertex1].includes(vertex2) && this.adjacencyList[vertex2]) {
+            this.adjacencyList[vertex1].push(vertex2);
+            this.adjacencyList[vertex2].push(vertex1);
+        }
+    }
 }
 
 export default Graph;
