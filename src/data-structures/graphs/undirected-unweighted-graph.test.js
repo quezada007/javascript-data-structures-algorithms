@@ -173,4 +173,32 @@ describe('Undirected Unweighted Graph', () => {
         g.removeVertex('Chicago');
         expect(g.adjacencyList).toMatchObject({});
     });
+
+    test('depth first traversal recursively', () => {
+        const g = new Graph();
+        expect(g.adjacencyList).toMatchObject({});
+        g.addVertex('A');
+        g.addVertex('B');
+        g.addVertex('C');
+        g.addVertex('D');
+        g.addVertex('E');
+        g.addVertex('F');
+        g.addEdge('A', 'B');
+        g.addEdge('A', 'C');
+        g.addEdge('B', 'D');
+        g.addEdge('C', 'E');
+        g.addEdge('D', 'E');
+        g.addEdge('D', 'F');
+        g.addEdge('E', 'F');
+        expect(g.adjacencyList).toMatchObject({
+            A: ['B', 'C'],
+            B: ['A', 'D'],
+            C: ['A', 'E'],
+            D: ['B', 'E', 'F'],
+            E: ['C', 'D', 'F'],
+            F: ['D', 'E']
+        });
+        expect(g.depthFirstTraversalRecursive('A')).toEqual(['A', 'B', 'D', 'E', 'C', 'F']);
+        expect(g.depthFirstTraversalRecursive('G')).toEqual([]);
+    });
 });
