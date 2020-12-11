@@ -102,6 +102,43 @@ class Graph {
         // Return the results array with all the vertices
         return results;
     }
+
+    /**
+     * Depth First Traversal Iterative.
+     * @param {string} startingVertex - The starting vertex.
+     * @returns {Array} - An array containing all the visited nodes.
+     */
+    depthFirstTraversalIterative(startingVertex) { // O(V+E)
+        // Create an array to store all the vertices
+        const results = [];
+        // Create a visited object to keep track of all the visited vertices
+        const visited = {};
+        // Create a stack and add the starting vertex
+        const stack = [startingVertex];
+        // Flag the starting vertex as visited
+        visited[startingVertex] = true;
+        // Keep track of the current vertex
+        let currentVertex;
+        // Loop through the stack
+        while (stack.length > 0) {
+            // Get the last vertex from the stack
+            currentVertex = stack.pop();
+            // Add the vertex to the results array
+            results.push(currentVertex);
+            // Visit every edge in a vertex
+            this.adjacencyList[currentVertex].forEach((neighbor) => {
+                // If the neighbors of the vertex are not visited, then traverse them
+                if (!visited[neighbor]) {
+                    // Flag the neighbor as visited
+                    visited[neighbor] = true;
+                    // Add the neighbor to the stack
+                    stack.push(neighbor);
+                }
+            });
+        }
+        // Return the results array with all the vertices
+        return results;
+    }
 }
 
 export default Graph;
