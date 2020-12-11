@@ -228,4 +228,31 @@ describe('Undirected Unweighted Graph', () => {
         });
         expect(g.depthFirstTraversalIterative('A')).toEqual(['A', 'C', 'E', 'F', 'D', 'B']);
     });
+
+    test('breadth first traversal', () => {
+        const g = new Graph();
+        expect(g.adjacencyList).toMatchObject({});
+        g.addVertex('A');
+        g.addVertex('B');
+        g.addVertex('C');
+        g.addVertex('D');
+        g.addVertex('E');
+        g.addVertex('F');
+        g.addEdge('A', 'B');
+        g.addEdge('A', 'C');
+        g.addEdge('B', 'D');
+        g.addEdge('C', 'E');
+        g.addEdge('D', 'E');
+        g.addEdge('D', 'F');
+        g.addEdge('E', 'F');
+        expect(g.adjacencyList).toMatchObject({
+            A: ['B', 'C'],
+            B: ['A', 'D'],
+            C: ['A', 'E'],
+            D: ['B', 'E', 'F'],
+            E: ['C', 'D', 'F'],
+            F: ['D', 'E']
+        });
+        expect(g.breadthFirstTraversal('A')).toEqual(['A', 'B', 'C', 'D', 'E', 'F']);
+    });
 });
