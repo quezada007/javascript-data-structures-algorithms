@@ -14,7 +14,7 @@ class Node {
 }
 
 /**
- * Class representing a Stack using a linked list.
+ * Class representing a Queue using a linked list.
  */
 class QueueLinkedList {
     /**
@@ -27,7 +27,7 @@ class QueueLinkedList {
     }
 
     /**
-     * Check the stack to see if it's empty.
+     * Check the queue to see if it's empty.
      * @returns {boolean} - true if the list is empty or false if not.
      */
     isEmpty() { // O(1)
