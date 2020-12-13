@@ -50,6 +50,25 @@ class Graph {
             this.adjacencyList[vertex2] = this.adjacencyList[vertex2].filter((obj) => obj.vertex !== vertex1);
         }
     }
+
+    /**
+     * Remove a vertex from the graph.
+     * @param {string} vertex - The vertex to remove from graph.
+     */
+    removeVertex(vertex) { // O(V)
+        // Check to make sure the vertex is in the graph
+        if (this.adjacencyList[vertex]) {
+            // Remove all edges from the vertex
+            while (this.adjacencyList[vertex].length > 0) {
+                // Get the first vertex on the list
+                const adjacentVertex = this.adjacencyList[vertex][0].vertex;
+                // Remove the connection to other vertices
+                this.removeEdge(vertex, adjacentVertex);
+            }
+            // Delete the vertex from the graph
+            delete this.adjacencyList[vertex];
+        }
+    }
 }
 
 export default Graph;
