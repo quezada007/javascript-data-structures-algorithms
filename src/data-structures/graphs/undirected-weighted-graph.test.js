@@ -150,4 +150,52 @@ describe('Undirected Weighted Graph', () => {
             C: []
         });
     });
+
+    test('removing a vertex from the graph', () => {
+        const g = new Graph();
+        g.addVertex('A');
+        g.addVertex('B');
+        g.addEdge('A', 'B', 6);
+        g.addVertex('D');
+        g.addEdge('A', 'D', 1);
+        g.addEdge('B', 'D', 2);
+        g.addVertex('E');
+        g.addEdge('E', 'B', 2);
+        g.addEdge('E', 'D', 1);
+        g.addVertex('C');
+        g.addEdge('C', 'B', 5);
+        expect(g.adjacencyList).toMatchObject({
+            A: [{ vertex: 'B', weight: 6 }, { vertex: 'D', weight: 1 }],
+            B: [{ vertex: 'A', weight: 6 }, { vertex: 'D', weight: 2 }, { vertex: 'E', weight: 2 }, { vertex: 'C', weight: 5 }],
+            D: [{ vertex: 'A', weight: 1 }, { vertex: 'B', weight: 2 }, { vertex: 'E', weight: 1 }],
+            E: [{ vertex: 'B', weight: 2 }, { vertex: 'D', weight: 1 }],
+            C: [{ vertex: 'B', weight: 5 }]
+        });
+        g.removeVertex('X');
+        expect(g.adjacencyList).toMatchObject({
+            A: [{ vertex: 'B', weight: 6 }, { vertex: 'D', weight: 1 }],
+            B: [{ vertex: 'A', weight: 6 }, { vertex: 'D', weight: 2 }, { vertex: 'E', weight: 2 }, { vertex: 'C', weight: 5 }],
+            D: [{ vertex: 'A', weight: 1 }, { vertex: 'B', weight: 2 }, { vertex: 'E', weight: 1 }],
+            E: [{ vertex: 'B', weight: 2 }, { vertex: 'D', weight: 1 }],
+            C: [{ vertex: 'B', weight: 5 }]
+        });
+        g.removeVertex('B');
+        expect(g.adjacencyList).toMatchObject({
+            A: [{ vertex: 'D', weight: 1 }],
+            D: [{ vertex: 'A', weight: 1 }, { vertex: 'E', weight: 1 }],
+            E: [{ vertex: 'D', weight: 1 }],
+            C: []
+        });
+        g.removeVertex('C');
+        expect(g.adjacencyList).toMatchObject({
+            A: [{ vertex: 'D', weight: 1 }],
+            D: [{ vertex: 'A', weight: 1 }, { vertex: 'E', weight: 1 }],
+            E: [{ vertex: 'D', weight: 1 }]
+        });
+        g.removeVertex('E');
+        expect(g.adjacencyList).toMatchObject({
+            A: [{ vertex: 'D', weight: 1 }],
+            D: [{ vertex: 'A', weight: 1 }]
+        });
+    });
 });
