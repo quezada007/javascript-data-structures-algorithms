@@ -61,6 +61,14 @@ class PriorityQueueArray {
         }
         return this.queue[0].data;
     }
+
+    /**
+     * Get the length of the queue.
+     * @returns {number} - The length of the queue.
+     */
+    getLength() { // O(1)
+        return this.queue.length;
+    }
 }
 
 export default PriorityQueueArray;
