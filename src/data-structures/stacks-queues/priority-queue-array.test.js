@@ -25,4 +25,23 @@ describe('Priority Queue Array', () => {
         expect(queue.queue[3].data).toEqual('b');
         expect(queue.queue[4].data).toEqual('c');
     });
+
+    test('removing from the queue using the dequeue method', () => {
+        const queue = new PriorityQueueArray();
+        expect(queue.queue).toHaveLength(0);
+        expect(() => { queue.dequeue(); }).toThrow();
+        queue.enqueue('a', 2);
+        expect(queue.dequeue()).toEqual('a');
+        expect(queue.queue).toEqual([]);
+        queue.enqueue('a', 2);
+        queue.enqueue('b', 2);
+        queue.enqueue('c', 3);
+        queue.enqueue('d', 1);
+        queue.enqueue('e', 1);
+        expect(queue.dequeue()).toEqual('d');
+        expect(queue.dequeue()).toEqual('e');
+        expect(queue.dequeue()).toEqual('a');
+        expect(queue.dequeue()).toEqual('b');
+        expect(queue.dequeue()).toEqual('c');
+    });
 });
