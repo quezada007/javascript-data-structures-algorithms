@@ -52,4 +52,19 @@ describe('Priority Queue Array', () => {
         queue.enqueue('a', 2);
         expect(queue.isEmpty()).toBe(false);
     });
+
+    test('peek method of the queue', () => {
+        const queue = new PriorityQueueArray();
+        expect(queue.queue).toHaveLength(0);
+        expect(() => { queue.peek(); }).toThrow();
+        queue.enqueue('a', 2);
+        expect(queue.peek()).toEqual('a');
+        queue.enqueue('b', 2);
+        queue.dequeue();
+        expect(queue.peek()).toEqual('b');
+        queue.enqueue('c', 1);
+        queue.enqueue('d', 4);
+        queue.enqueue('e', 5);
+        expect(queue.peek()).toEqual('c');
+    });
 });
