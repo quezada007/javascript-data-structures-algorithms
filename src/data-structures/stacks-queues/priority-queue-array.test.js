@@ -44,4 +44,12 @@ describe('Priority Queue Array', () => {
         expect(queue.dequeue()).toEqual('b');
         expect(queue.dequeue()).toEqual('c');
     });
+
+    test('queue is empty', () => {
+        const queue = new PriorityQueueArray();
+        expect(queue.queue).toHaveLength(0);
+        expect(queue.isEmpty()).toBe(true);
+        queue.enqueue('a', 2);
+        expect(queue.isEmpty()).toBe(false);
+    });
 });
