@@ -16,6 +16,26 @@ class PriorityQueueArray {
     isEmpty() { // O(1)
         return this.queue.length === 0;
     }
+
+    /**
+     * Add data to the end of the queue.
+     * @param {string|number} data - The data for the queue.
+     * @param {number} priority - The priority number.
+     */
+    enqueue(data, priority) { // O(n)
+        const element = { data, priority };
+        let isAdded = false;
+        for (let i = 0; i < this.queue.length; i++) {
+            if (priority < this.queue[i].priority) {
+                this.queue.splice(i, 0, element);
+                isAdded = true;
+                break;
+            }
+        }
+        if (!isAdded) {
+            this.queue.push(element);
+        }
+    }
 }
 
 export default PriorityQueueArray;
