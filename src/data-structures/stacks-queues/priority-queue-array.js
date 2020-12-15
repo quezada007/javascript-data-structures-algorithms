@@ -36,6 +36,19 @@ class PriorityQueueArray {
             this.queue.push(element);
         }
     }
+
+    /**
+     * Remove data from the front of the queue.
+     * @returns {string|number} - The data removed from the front of the queue.
+     * @throws Will throw an error if the queue is empty.
+     */
+    dequeue() { // O(n)
+        if (this.isEmpty()) {
+            throw new Error('The Queue is empty');
+        }
+        const element = this.queue.shift();
+        return element.data;
+    }
 }
 
 export default PriorityQueueArray;
