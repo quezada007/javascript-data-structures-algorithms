@@ -43,4 +43,11 @@ describe('Priority Queue Linked List', () => {
         expect(queue.dequeue()).toEqual('b');
         expect(queue.dequeue()).toEqual('c');
     });
+
+    test('queue is empty', () => {
+        const queue = new PriorityQueueLinkedList();
+        expect(queue.isEmpty()).toBe(true);
+        queue.enqueue('a');
+        expect(queue.isEmpty()).toBe(false);
+    });
 });
