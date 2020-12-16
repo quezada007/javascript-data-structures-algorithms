@@ -83,6 +83,14 @@ class PriorityQueueLinkedList {
         }
         return this.head.data;
     }
+
+    /**
+     * Get the length of the queue.
+     * @returns {number} - The length of the queue.
+     */
+    getLength() { // O(1)
+        return this.length;
+    }
 }
 
 export default PriorityQueueLinkedList;
