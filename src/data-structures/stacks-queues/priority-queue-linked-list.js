@@ -55,6 +55,22 @@ class PriorityQueueLinkedList {
         }
         this.length += 1;
     }
+
+    /**
+     * Remove data from the front of the queue.
+     * @returns {string|number} - The data removed from the front of the queue.
+     * @throws Will throw an error if the queue is empty.
+     */
+    dequeue() { // O(1)
+        if (this.isEmpty()) {
+            throw new Error('The Queue is empty');
+        }
+        const current = this.head;
+        this.head = this.head.next;
+        current.next = null;
+        this.length -= 1;
+        return current.data;
+    }
 }
 
 export default PriorityQueueLinkedList;
