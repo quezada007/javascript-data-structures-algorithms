@@ -34,6 +34,27 @@ class PriorityQueueLinkedList {
     isEmpty() { // O(1)
         return this.head === null;
     }
+
+    /**
+     * Add data to the queue based on priority.
+     * @param {string|number} data - The data for the queue.
+     * @param {number} priority - The priority number.
+     */
+    enqueue(data, priority) { // O(n)
+        const newNode = new Node(data, priority);
+        if (this.head === null || priority < this.head.priority) {
+            newNode.next = this.head;
+            this.head = newNode;
+        } else {
+            let current = this.head;
+            while (current.next !== null && current.next.priority <= priority) {
+                current = current.next;
+            }
+            newNode.next = current.next;
+            current.next = newNode;
+        }
+        this.length += 1;
+    }
 }
 
 export default PriorityQueueLinkedList;
