@@ -1,3 +1,6 @@
+import PriorityQueueLinkedList from '../stacks-queues/priority-queue-linked-list';
+
+/* eslint-disable max-classes-per-file */
 /**
  * Class representing an Undirected Weighted Graph.
  */
@@ -68,6 +71,50 @@ class Graph {
             // Delete the vertex from the graph
             delete this.adjacencyList[vertex];
         }
+    }
+
+    /**
+     * Dijkstra Shortest Path.
+     * @param {string} startingVertex - The starting vertex.
+     * @param {string} endingVertex - The ending vertex.
+     */
+    dijkstraShortestPath(startingVertex, endingVertex) {
+        const priorityQueue = new PriorityQueueLinkedList();
+        const shortestDistance = {};
+        const previous = {};
+        const path = [];
+        const vertices = Object.keys(this.adjacencyList);
+        vertices.forEach((vertex) => {
+            if (vertex === startingVertex) {
+                shortestDistance[vertex] = 0;
+                priorityQueue.enqueue(vertex, 0);
+            } else {
+                shortestDistance[vertex] = Infinity;
+                priorityQueue.enqueue(vertex, Infinity);
+            }
+            previous[vertex] = null;
+        });
+        while (!priorityQueue.isEmpty()) {
+            let smallest = priorityQueue.dequeue();
+            if (smallest === endingVertex) {
+                while (previous[smallest]) {
+                    path.push(smallest);
+                    smallest = previous[smallest];
+                }
+                path.push(startingVertex);
+                break;
+            }
+            this.adjacencyList[smallest].forEach((neighbor) => {
+                const candidate = shortestDistance[smallest] + neighbor.weight;
+                const nextNeighbor = neighbor.vertex;
+                if (candidate < shortestDistance[nextNeighbor]) {
+                    shortestDistance[nextNeighbor] = candidate;
+                    previous[nextNeighbor] = smallest;
+                    priorityQueue.enqueue(nextNeighbor, candidate);
+                }
+            });
+        }
+        return path.reverse();
     }
 }
 
