@@ -198,4 +198,30 @@ describe('Undirected Weighted Graph', () => {
             D: [{ vertex: 'A', weight: 1 }]
         });
     });
+
+    test('Dijkstra shortest path algorithm', () => {
+        const g = new Graph();
+        g.addVertex('A');
+        g.addVertex('B');
+        g.addEdge('A', 'B', 6);
+        g.addVertex('D');
+        g.addEdge('A', 'D', 1);
+        g.addEdge('B', 'D', 2);
+        g.addVertex('E');
+        g.addEdge('E', 'B', 2);
+        g.addEdge('E', 'D', 1);
+        g.addVertex('C');
+        g.addEdge('C', 'B', 5);
+        g.addEdge('E', 'C', 5);
+        expect(g.adjacencyList).toMatchObject({
+            A: [{ vertex: 'B', weight: 6 }, { vertex: 'D', weight: 1 }],
+            B: [{ vertex: 'A', weight: 6 }, { vertex: 'D', weight: 2 }, { vertex: 'E', weight: 2 }, { vertex: 'C', weight: 5 }],
+            D: [{ vertex: 'A', weight: 1 }, { vertex: 'B', weight: 2 }, { vertex: 'E', weight: 1 }],
+            E: [{ vertex: 'B', weight: 2 }, { vertex: 'D', weight: 1 }, { vertex: 'C', weight: 5 }],
+            C: [{ vertex: 'B', weight: 5 }, { vertex: 'E', weight: 5 }]
+        });
+        expect(g.dijkstraShortestPath('A', 'C')).toEqual(['A', 'D', 'E', 'C']);
+        expect(g.dijkstraShortestPath('A', 'E')).toEqual(['A', 'D', 'E']);
+        expect(g.dijkstraShortestPath('A', 'F')).toEqual([]);
+    });
 });
