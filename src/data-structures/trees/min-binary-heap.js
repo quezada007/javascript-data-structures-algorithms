@@ -71,6 +71,23 @@ class MinBinaryHeap {
             elementIndex = swapIndex;
         }
     }
+
+    /**
+     * Extract the min value of the heap.
+     * @throws Will throw an error if the heap is empty.
+     */
+    extractMin() { // O(log n)
+        if (this.heap.length === 0) {
+            throw new Error('The Heap is empty');
+        }
+        const min = this.heap[0];
+        const end = this.heap.pop();
+        if (this.heap.length > 0) {
+            this.heap[0] = end;
+            this.siftDown();
+        }
+        return min;
+    }
 }
 
 export default MinBinaryHeap;
