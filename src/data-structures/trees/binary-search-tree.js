@@ -32,7 +32,7 @@ class BinarySearchTree {
      */
     insert(data) { // O(log n)
         const newNode = new Node(data);
-        // If the treen is empty, insert at the root
+        // If the tree is empty, insert at the root
         if (this.root === null) {
             this.root = newNode;
             return;
