@@ -6,6 +6,7 @@
   "scripts": {
     "clean": "rimraf coverage docs",
     "test": "npm run clean && jest --coverage",
+    "test:file": "jest --",
     "docs": "npm run clean && jsdoc -c jsdoc.json",
     "build": "npm run clean && jest --coverage && jsdoc -c jsdoc.json"
   },
