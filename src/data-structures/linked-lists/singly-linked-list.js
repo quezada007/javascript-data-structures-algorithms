@@ -265,12 +265,11 @@ class SinglyLinkedList {
     reverse() { // O(n)
         let previous = null;
         let current = this.head;
-        let next;
         while (current !== null) {
-            next = current.next;
+            const nextNode = current.next;
             current.next = previous;
             previous = current;
-            current = next;
+            current = nextNode;
         }
         this.head = previous;
     }
